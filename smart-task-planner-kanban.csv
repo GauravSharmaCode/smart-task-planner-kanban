@@ -1,0 +1,32 @@
+Title,Status,Priority,Description
+test: setup Jest environment,To Do,High,Configure Jest with in-memory PostgreSQL and Redis mocks; ensure test scripts run in CI.
+feat: initialize Express app structure,To Do,High,Setup app.ts with express middleware (JSON parser, helmet, morgan) and error handling.
+test: validate Prisma connection,To Do,Medium,Write test to confirm Prisma connects to database and disconnects cleanly.
+feat: implement Prisma models,To Do,High,Create models for Users, Tasks, Categories, ActivityLogs, AuditLogs using schema.prisma.
+test: register endpoint validation,To Do,High,Write test cases for /auth/register with missing fields, duplicate emails, invalid data.
+feat: /auth/register endpoint,To Do,High,Implement user registration with bcrypt password hashing and input validation.
+test: login endpoint with JWT issuance,To Do,High,Write test for /auth/login with valid and invalid credentials; assert JWT returned.
+feat: /auth/login endpoint,To Do,High,Implement login logic, JWT generation, and token expiry.
+test: protected route access,To Do,High,Ensure unauthorized requests to /tasks are rejected with 401 and valid token grants access.
+feat: JWT middleware,To Do,High,Create middleware for verifying JWT, attach user context to request.
+test: task creation endpoint,To Do,High,Write test for POST /tasks; check required fields, ownership, and DB persistence.
+feat: /tasks POST endpoint,To Do,High,Implement task creation logic; invalidate cache upon creation.
+test: get all tasks (cached),To Do,Medium,Write test for GET /tasks verifying Redis caching and cache invalidation after create/update.
+feat: /tasks GET endpoint with caching,To Do,Medium,Implement cached task fetch using Redis; 30s TTL.
+test: task update and delete behavior,To Do,Medium,Ensure task ownership validated and cache invalidated after update/delete.
+feat: /tasks PATCH and DELETE endpoints,To Do,Medium,Implement task update and delete routes with proper access control.
+test: category CRUD operations,To Do,Medium,Write tests for /categories endpoints with user-level limits for basic role.
+feat: /categories CRUD endpoints,To Do,Medium,Implement category management logic with role-based constraints.
+test: user profile fetch/update,To Do,Low,Check GET/PATCH /users/me endpoint responses.
+feat: /users/me endpoints,To Do,Low,Implement profile retrieval and update.
+test: upgrade to premium,To Do,Low,Ensure /users/upgrade correctly switches role and returns updated token.
+feat: /users/upgrade endpoint,To Do,Low,Mock upgrade endpoint for premium plan simulation.
+test: activity log recording,To Do,Medium,Verify that actions (create/update/delete task) insert entries into ActivityLogs.
+feat: ActivityLogs service,To Do,Medium,Implement centralized logger for recording user activity.
+test: audit log generation,To Do,Medium,Write middleware test ensuring every API call logs in AuditLogs for premium users.
+feat: AuditLogs middleware,To Do,Medium,Implement audit logging middleware for premium users.
+test: background job categorization,To Do,High,Mock scheduled job to categorize uncategorized tasks; verify DB update and logs.
+feat: Smart Suggestion job,To Do,High,Implement keyword-based categorization and logging.
+test: integration - auth + task flow,To Do,High,Run end-to-end test: register → login → create task → fetch → delete → validate logs.
+feat: Docker setup,To Do,Low,Add Dockerfile and docker-compose for Node + Postgres + Redis; include Jest test service.
+test: lint and type safety,To Do,Low,Add ESLint + TypeScript type checks in CI workflow; ensure project builds cleanly.
